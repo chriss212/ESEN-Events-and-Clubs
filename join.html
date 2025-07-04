@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Us - ESEN Life</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-blue-900 font-sans">
+
+  <!-- Navbar -->
+  <header class="bg-blue-900 text-white shadow">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold">ESEN Life</h1>
+      <nav class="space-x-4">
+        <a href="index.html" class="hover:text-yellow-400">Home</a>
+        <a href="events.html" class="hover:text-yellow-400">Events</a>
+        <a href="clubs.html" class="hover:text-yellow-400">Clubs</a>
+        <a href="join.html" class="hover:text-yellow-400">Join Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Join Form -->
+  <section class="max-w-2xl mx-auto py-12 px-4">
+    <h2 class="text-3xl font-bold text-center mb-8">Get Involved</h2>
+    <form class="bg-white p-6 rounded-lg shadow space-y-4">
+      <div>
+        <label for="name" class="block mb-1 font-semibold">Full Name</label>
+        <input type="text" id="name" class="w-full border border-gray-300 rounded px-3 py-2" required />
+      </div>
+      <div>
+        <label for="email" class="block mb-1 font-semibold">Email</label>
+        <input type="email" id="email" class="w-full border border-gray-300 rounded px-3 py-2" required />
+      </div>
+      <div>
+        <label for="club" class="block mb-1 font-semibold">Interested Club</label>
+        <select id="club" class="w-full border border-gray-300 rounded px-3 py-2">
+          <option>Debate Club</option>
+          <option>Tech & Coding Club</option>
+          <option>Music Club</option>
+        </select>
+      </div>
+      <div>
+        <label for="message" class="block mb-1 font-semibold">Why do you want to join?</label>
+        <textarea id="message" rows="4" class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+      </div>
+      <button type="submit" class="bg-yellow-400 text-blue-900 font-bold py-2 px-6 rounded hover:bg-yellow-300 transition">
+        Submit
+      </button>
+    </form>
+  </section>
+
+  <footer class="bg-blue-900 text-white text-center py-6">
+    <p>© 2025 ESEN Life. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

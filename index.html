@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESEN Events & Clubs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-blue-900 font-sans">
+
+  <!-- 🔷 Navbar -->
+  <header class="bg-blue-900 text-white shadow">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold">ESEN Life</h1>
+      <nav class="space-x-4 text-sm md:text-base">
+        <a href="index.html" class="hover:text-yellow-400">Home</a>
+        <a href="events.html" class="hover:text-yellow-400">Events</a>
+        <a href="clubs.html" class="hover:text-yellow-400">Clubs</a>
+        <a href="join.html" class="hover:text-yellow-400">Join Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 🟡 Hero Section -->
+  <section class="bg-white py-16 text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-4xl font-extrabold mb-4">Explore Life Beyond the Classroom</h2>
+      <p class="text-lg mb-6">Discover events, connect with clubs, and get involved at ESEN.</p>
+      <a href="events.html" class="bg-yellow-400 text-blue-900 font-semibold py-2 px-6 rounded shadow hover:bg-yellow-300 transition">
+        See Upcoming Events
+      </a>
+    </div>
+  </section>
+
+  <!-- 🔷 Carousel Section -->
+  <section class="max-w-5xl mx-auto py-12 px-4">
+    <h3 class="text-2xl font-semibold mb-6 text-center">Featured Events</h3>
+
+    <div class="relative overflow-hidden rounded-lg shadow-lg">
+      <!-- Slides -->
+      <div id="carousel-slides" class="flex transition-transform duration-700 ease-in-out w-[300%]">
+        <img src="/assets/event1.jpg" alt="Event 1" class="w-full object-cover h-64 flex-shrink-0" />
+        <img src="/assets/event2.jpg" alt="Event 2" class="w-full object-cover h-64 flex-shrink-0" />
+        <img src="/assets/event3.jpg" alt="Event 3" class="w-full object-cover h-64 flex-shrink-0" />
+      </div>
+
+      <!-- Navigation Buttons -->
+      <button id="prevBtn" class="absolute top-1/2 left-3 transform -translate-y-1/2 bg-white text-blue-900 p-2 rounded-full shadow hover:bg-yellow-400 transition">
+        ‹
+      </button>
+      <button id="nextBtn" class="absolute top-1/2 right-3 transform -translate-y-1/2 bg-white text-blue-900 p-2 rounded-full shadow hover:bg-yellow-400 transition">
+        ›
+      </button>
+    </div>
+  </section>
+
+  <!-- 🟡 Clubs Preview -->
+  <section class="bg-gray-200 py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <h3 class="text-2xl font-semibold mb-8 text-center">Popular Clubs</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
+          <h4 class="text-lg font-bold mb-2">Debate Club</h4>
+          <p class="text-sm mb-3">Sharpen your argument skills and compete nationally.</p>
+          <a href="clubs.html" class="text-yellow-400 hover:underline">Learn more →</a>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
+          <h4 class="text-lg font-bold mb-2">Tech & Coding Club</h4>
+          <p class="text-sm mb-3">Join coding challenges, build apps, and explore tech trends.</p>
+          <a href="clubs.html" class="text-yellow-400 hover:underline">Learn more →</a>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
+          <h4 class="text-lg font-bold mb-2">Music Club</h4>
+          <p class="text-sm mb-3">Perform, jam, or learn an instrument with peers.</p>
+          <a href="clubs.html" class="text-yellow-400 hover:underline">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔷 Footer -->
+  <footer class="bg-blue-900 text-white text-center py-6 mt-12">
+    <p>© 2025 ESEN Life. All rights reserved.</p>
+  </footer>
+
+  <!-- 🧠 Carousel JS -->
+  <script>
+    let currentSlide = 0;
+    const slidesContainer = document.getElementById("carousel-slides");
+    const totalSlides = slidesContainer.children.length;
+
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    });
+
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    });
+
+    function updateCarousel() {
+      const slideWidth = slidesContainer.children[0].offsetWidth;
+      slidesContainer.style.transform = `translateX(-${slideWidth * currentSlide}px)`;
+    }
+  </script>
+</body>
+</html>
