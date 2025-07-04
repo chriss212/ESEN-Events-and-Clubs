@@ -4,14 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ESEN Events & Clubs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mouse+Memoirs&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            montserrat: ['Montserrat', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
   <style>
     html {
       scroll-behavior: smooth;
     }
   </style>
 </head>
-<body class="bg-gray-100 text-blue-900 font-sans">
+<body class="bg-gray-100 text-blue-900 font-montserrat">
 
   <!-- 🔷 Navbar -->
   <header class="bg-blue-900 text-white shadow">
