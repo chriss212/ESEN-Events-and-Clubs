@@ -27,21 +27,38 @@
 </head>
 <body class="bg-gray-100 text-blue-900 font-montserrat">
 
-  <!-- 🔷 Navbar -->
-    <header class="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white shadow-xl backdrop-blur-sm">
-        <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
-            <h1 class="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-                ESEN Events & Clubs
-            </h1>
-            <nav class="space-x-6">
-                <a href="index.html" class="hover:text-yellow-400 transition-colors duration-300 font-medium border-b-2 border-yellow-400">Home</a>
-                <a href="events.html"
-                    class="hover:text-yellow-400 transition-colors duration-300 font-medium">Events</a>
-                <a href="clubs.html" class="hover:text-yellow-400 transition-colors duration-300 font-medium">Clubs</a>
-                <a href="join.html" class="hover:text-yellow-400 transition-colors duration-300 font-medium">Join Us</a>
-            </nav>
-        </div>
-    </header>
+
+  <!-- Navbar -->
+<header class="bg-blue-900 text-white shadow">
+  <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+    <h1 class="text-2xl font-bold">ESEN Events & Clubs</h1>
+
+    <!-- 🔽 Burger Button (mobile only) -->
+    <button id="menu-toggle" class="block md:hidden text-white focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+
+
+    <!-- 🔷 Nav Links -->
+    <nav id="menu" class="hidden md:flex space-x-4 text-sm md:text-base">
+      <a href="index.html" class="hover:text-yellow-400">Home</a>
+      <a href="events.html" class="hover:text-yellow-400">Events</a>
+      <a href="clubs.html" class="hover:text-yellow-400">Clubs</a>
+      <a href="join.html" class="hover:text-yellow-400">Join</a>
+    </nav>
+  </div>
+
+  <!-- 🔽 Mobile Menu (hidden by default) -->
+  <div id="mobile-menu" class="md:hidden hidden bg-blue-800 px-4 pb-4 space-y-2">
+    <a href="index.html" class="block hover:text-yellow-400">Home</a>
+    <a href="events.html" class="block hover:text-yellow-400">Events</a>
+    <a href="clubs.html" class="block hover:text-yellow-400">Clubs</a>
+    <a href="join.html" class="block hover:text-yellow-400">Join</a>
+  </div>
+</header>
+
 
   <!-- 🟡 Hero Section -->
   <section class="bg-white py-16 text-center">
@@ -52,30 +69,66 @@
       <a href="events.html" class="bg-yellow-400 text-blue-900 font-semibold py-2 px-6 rounded shadow hover:bg-yellow-300 transition">
         See Upcoming Events
       </a>
-    </div>
+    </div>  
   </section>
 
   <!-- 🔷 Carousel Section -->
-  <section class="max-w-5xl mx-auto py-12 px-4">
-    <h3 class="text-2xl font-semibold mb-6 text-center">Featured Events</h3>
+<section class="max-w-5xl mx-auto py-12 px-4">
+  <h3 class="text-2xl font-semibold mb-6 text-center">Featured Events</h3>
 
-    <div class="relative overflow-hidden rounded-lg shadow-lg">
-      <!-- Slides -->
-      <div id="carousel-slides" class="flex transition-transform duration-700 ease-in-out w-[300%]">
-        <img src="/assets/event1.jpg" alt="Event 1" class="w-full object-cover h-64 flex-shrink-0" />
-        <img src="/assets/event2.jpg" alt="Event 2" class="w-full object-cover h-64 flex-shrink-0" />
-        <img src="/assets/event3.jpg" alt="Event 3" class="w-full object-cover h-64 flex-shrink-0" />
+  <div class="relative overflow-hidden rounded-lg shadow-lg h-[400px]">
+    <!-- Slides -->
+    <div id="carousel-slides" class="flex transition-transform duration-700 ease-in-out w-[100%] h-full">
+      
+      <!-- Slide 1 -->
+        <div class="relative w-full h-full flex-shrink-0">
+        <img src="/assets/event1.jpg" alt="Event 1" class="w-full h-full object-cover" />
+        <div class="absolute bottom-0 bg-blue-900 bg-opacity-70 text-white w-full p-4">
+          <h4 class="text-lg font-semibold">Software Engineer Week</h4>
+          <p class="text-sm">To be held during the week of September 8 - 13. With activities focused on software development, workshops, and guest speakers from the industry.</p>
+        </div>
       </div>
 
-      <!-- Navigation Buttons -->
-      <button id="prevBtn" class="absolute top-1/2 left-3 transform -translate-y-1/2 bg-white text-blue-900 p-2 rounded-full shadow hover:bg-yellow-400 transition">
-        ‹
-      </button>
-      <button id="nextBtn" class="absolute top-1/2 right-3 transform -translate-y-1/2 bg-white text-blue-900 p-2 rounded-full shadow hover:bg-yellow-400 transition">
-        ›
-      </button>
+
+      <!-- Slide 2 -->
+      <div class="relative w-full h-full flex-shrink-0">
+        <img src="/assets/event2.jpg" alt="Event 2" class="w-full h-full object-cover" />
+        <div class="absolute bottom-0 bg-blue-900 bg-opacity-70 text-white w-full p-4">
+          <h4 class="text-lg font-semibold">ProBecas Run 2025</h4>
+          <p class="text-sm">The activity, to be held on Sunday, October 26th, is carried out to raise funds to support young people in different fields with scholarships.</p>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="relative w-full h-full flex-shrink-0">
+        <img src="/assets/event3.jpg" alt="Event 3" class="w-full h-full object-cover" />
+        <div class="absolute bottom-0 bg-blue-900 bg-opacity-70 text-white w-full p-4">
+          <h4 class="text-lg font-semibold">Scholarships and Master's Degrees Virtual Fair 2025</h4>
+          <p class="text-sm">A space created for you to discover new academic opportunities, both nationally and internationally.</p>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="relative w-full h-full flex-shrink-0">
+        <img src="/assets/event4.jpg" alt="Event 4" class="w-full h-full object-cover" />
+        <div class="absolute bottom-0 bg-blue-900 bg-opacity-70 text-white w-full p-4">
+          <h4 class="text-lg font-semibold">Regular Admission Exam 2025</h4>
+          <p class="text-sm">August 16, 2025. This exam is for private institutions.</p>
+        </div>
+      </div>
     </div>
-  </section>
+
+    <!-- Navigation Buttons -->
+    <button id="prevBtn" class="absolute top-1/2 left-3 transform -translate-y-1/2 bg-white text-blue-900 p-2 rounded-full shadow hover:bg-yellow-400 transition">
+      ‹
+    </button>
+    <button id="nextBtn" class="absolute top-1/2 right-3 transform -translate-y-1/2 bg-white text-blue-900 p-2 rounded-full shadow hover:bg-yellow-400 transition">
+      ›
+    </button>
+  </div>
+</section>
+
+
 
   <!-- 🟡 Clubs Preview -->
   <section class="bg-gray-200 py-12">
@@ -83,18 +136,18 @@
       <h3 class="text-2xl font-semibold mb-8 text-center">Popular Clubs</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
-          <h4 class="text-lg font-bold mb-2">Debate Club</h4>
-          <p class="text-sm mb-3">Sharpen your argument skills and compete nationally.</p>
+          <h4 class="text-lg font-bold mb-2">Alumni Entrepreneur Society</h4>
+          <p class="text-sm mb-3">Organization in which students come together with the objective of promoting, developing and supporting entrepreneurship within and outside ESEN through the professional and personal development of its members.</p>
           <a href="clubs.html" class="text-yellow-400 hover:underline">Learn more →</a>
         </div>
         <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
-          <h4 class="text-lg font-bold mb-2">Tech & Coding Club</h4>
-          <p class="text-sm mb-3">Join coding challenges, build apps, and explore tech trends.</p>
+          <h4 class="text-lg font-bold mb-2">United Nations Model</h4>
+          <p class="text-sm mb-3">MUN ESEN was created with the purpose of recreating the Model United Nations in Salvadoran territory, to promote a culture of dialogue and debate in its student community and between different national and international educational institutions. </p>
           <a href="clubs.html" class="text-yellow-400 hover:underline">Learn more →</a>
         </div>
         <div class="bg-white p-4 rounded-lg shadow hover:shadow-md transition">
-          <h4 class="text-lg font-bold mb-2">Music Club</h4>
-          <p class="text-sm mb-3">Perform, jam, or learn an instrument with peers.</p>
+          <h4 class="text-lg font-bold mb-2">Rotaract ESEN</h4>
+          <p class="text-sm mb-3">Rotaract is an organization with clubs around the world. The name of the school's branch is Rotaract Santa Tecla ESEN. This initiative was born from a group of friends who are students at the Escuela Superior de Economía y Negocios with the purpose of helping society with different projects. “The best of all is that it is done among friends”.</p>
           <a href="clubs.html" class="text-yellow-400 hover:underline">Learn more →</a>
         </div>
       </div>
@@ -106,26 +159,8 @@
     <p>© 2025 ESEN Events & Clubs. All rights reserved.</p>
   </footer>
 
-  <!-- 🧠 Carousel JS -->
-  <script>
-    let currentSlide = 0;
-    const slidesContainer = document.getElementById("carousel-slides");
-    const totalSlides = slidesContainer.children.length;
+  <script src="js/script.js"></script>
 
-    document.getElementById("nextBtn").addEventListener("click", () => {
-      currentSlide = (currentSlide + 1) % totalSlides;
-      updateCarousel();
-    });
 
-    document.getElementById("prevBtn").addEventListener("click", () => {
-      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      updateCarousel();
-    });
-
-    function updateCarousel() {
-      const slideWidth = slidesContainer.children[0].offsetWidth;
-      slidesContainer.style.transform = `translateX(-${slideWidth * currentSlide}px)`;
-    }
-  </script>
 </body>
 </html>
