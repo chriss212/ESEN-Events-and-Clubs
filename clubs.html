@@ -6,7 +6,7 @@
   <title>ESEN Clubs</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 text-blue-900 font-sans">
+<body class="bg-gray-100 text-blue-900 font-sans min-h-screen flex flex-col">
 
   <!-- Navbar -->
   <header class="bg-blue-900 text-white shadow">
@@ -21,25 +21,79 @@
     </div>
   </header>
 
-  <!-- Club List -->
-  <section class="max-w-6xl mx-auto py-12 px-4">
-    <h2 class="text-3xl font-bold text-center mb-8">Our Clubs</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-xl font-bold mb-2">Debate Club</h3>
-        <p>Sharpen your argument skills, attend competitions and improve public speaking.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-xl font-bold mb-2">Tech & Coding Club</h3>
-        <p>Learn to code, build projects and prepare for hackathons with other students.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-xl font-bold mb-2">Music Club</h3>
-        <p>Whether you sing or play an instrument, this is your stage. Join weekly jams!</p>
-      </div>
-    </div>
-  </section>
+  <!-- Main Content -->
+  <main class="flex-grow">
+    <section class="max-w-6xl mx-auto py-12 px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Our Clubs</h2>
+      <div class="grid md:grid-cols-3 gap-8">
 
+        <!-- Rota -->
+        <div class="bg-white p-6 rounded-lg shadow text-center">
+          <img src="./img/LOGO_PINK_RotaractSantaTeclaESEN-1-768x157.png" alt="Debate Club" class="w-24 h-24 mx-auto mb-4" />
+          <h3 class="text-xl font-bold mb-2">Rotaract</h3>
+          <p>We are young people committed to making a positive impact in the community through leadership, social projects, and professional development.</p>
+        </div>
+
+        <!-- Music -->
+        <div class="bg-white p-6 rounded-lg shadow text-center">
+          <img src="./img/logo-esen-music-289x300.jpg" alt="Tech & Coding Club" class="w-24 h-24 mx-auto mb-4" />
+          <h3 class="text-xl font-bold mb-2">ESEN MUSIC</h3>
+          <p>Our purpose is to develop the musical art of students with artistic vocation, supporting events organized by different associations and also performing outside the school.</p>
+        </div>
+
+        <!-- Girl Up -->
+        <div class="bg-white p-6 rounded-lg shadow text-center">
+          <img src="img/music.png" alt="Music Club" class="w-24 h-24 mx-auto mb-4" />
+          <h3 class="text-xl font-bold mb-2">Girl Up</h3>
+          <p>
+            It is a global development movement led by young people who take action to defend and achieve gender equity.</p>
+        </div>
+
+         <!-- SAE -->
+        <div class="bg-white p-6 rounded-lg shadow text-center">
+          <img src="./img/Logo-SAE-290x290.png" alt="Tech & Coding Club" class="w-24 h-24 mx-auto mb-4" />
+          <h3 class="text-xl font-bold mb-2">SAE</h3>
+          <p>It is a society of entrepreneurial students from ESEN who are dedicated to promoting, developing and supporting any entrepreneurial activity.</p>
+        </div>
+
+          <!-- Techo -->
+         <div class="bg-white p-6 rounded-lg shadow text-center">
+          <img src="./img/LOGO-TECHO-290x290.png" alt="Tech & Coding Club" class="w-24 h-24 mx-auto mb-4" />
+          <h3 class="text-xl font-bold mb-2">Techo</h3>
+          <p>Techo is an organization present in Latin America and the Caribbean that seeks to overcome the poverty experienced by thousands of people in precarious settlements, through the joint action of its residents and young volunteers.</p>
+        </div>
+
+        <!-- EduTech -->
+         <div class="bg-white p-6 rounded-lg shadow text-center">
+          <img src="img/coding.png" alt="Tech & Coding Club" class="w-24 h-24 mx-auto mb-4" />
+          <h3 class="text-xl font-bold mb-2">EduTech</h3>
+          <p>Our goal is to reduce the gap in access to technological tools and train students in robotics and technology to replicate it in schools in Santa Tecla.</p>
+        </div>
+
+         <!-- ProBecas -->
+         <div class="bg-white p-6 rounded-lg shadow text-center">
+          <img src="img/coding.png" alt="Tech & Coding Club" class="w-24 h-24 mx-auto mb-4" />
+          <h3 class="text-xl font-bold mb-2">ProBecas</h3>
+          <p>It was created with the aim of organizing various fundraising activities that cover food, transportation and accommodation costs, according to the needs of each student.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow text-center">
+          <img src="./img/LogoHope-300x156.jpg" alt="Tech & Coding Club" class="w-24 h-24 mx-auto mb-4" />
+          <h3 class="text-xl font-bold mb-2">Hope</h3>
+          <p>It is an organization of young university students committed to the fight against childhood cancer in El Salvador.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow text-center">
+          <img src="./img/Pasitos-1.jpg" alt="Tech & Coding Club" class="w-24 h-24 mx-auto mb-4" />
+          <h3 class="text-xl font-bold mb-2">Pasitos</h3>
+          <p>It's an association that represents the future for many children in El Matazano, encouraging them to dare to pursue their dreams.</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
   <footer class="bg-blue-900 text-white text-center py-6">
     <p>© 2025 ESEN Events & Clubs. All rights reserved.</p>
   </footer>
