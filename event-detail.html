@@ -24,17 +24,35 @@
 <body class="bg-gray-100 text-blue-900 font-montserrat">
 
   <!-- Navbar -->
-  <header class="bg-blue-900 text-white shadow">
-    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
-      <h1 class="text-2xl font-bold">ESEN Life</h1>
-      <nav class="space-x-4">
-        <a href="index.html" class="hover:text-yellow-400">Home</a>
-        <a href="events.html" class="hover:text-yellow-400">Events</a>
-        <a href="clubs.html" class="hover:text-yellow-400">Clubs</a>
-        <a href="join.html" class="hover:text-yellow-400">Join Us</a>
-      </nav>
-    </div>
-  </header>
+<header class="bg-blue-900 text-white shadow">
+  <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+    <h1 class="text-2xl font-bold">ESEN Events & Clubs</h1>
+
+    <!-- 🔽 Burger Button (mobile only) -->
+    <button id="menu-toggle" class="block md:hidden text-white focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+
+
+    <!-- 🔷 Nav Links -->
+    <nav id="menu" class="hidden md:flex space-x-4 text-sm md:text-base">
+      <a href="index.html" class="hover:text-yellow-400">Home</a>
+      <a href="events.html" class="hover:text-yellow-400">Events</a>
+      <a href="clubs.html" class="hover:text-yellow-400">Clubs</a>
+      <a href="join.html" class="hover:text-yellow-400">Join</a>
+    </nav>
+  </div>
+
+  <!-- 🔽 Mobile Menu (hidden by default) -->
+  <div id="mobile-menu" class="md:hidden hidden bg-blue-800 px-4 pb-4 space-y-2">
+    <a href="index.html" class="block hover:text-yellow-400">Home</a>
+    <a href="events.html" class="block hover:text-yellow-400">Events</a>
+    <a href="clubs.html" class="block hover:text-yellow-400">Clubs</a>
+    <a href="join.html" class="block hover:text-yellow-400">Join</a>
+  </div>
+</header>
 
   <!-- Hero Banner -->
   <section class="bg-yellow-400 py-16 text-center text-blue-900">
@@ -73,8 +91,12 @@
 
   <!-- Footer -->
   <footer class="bg-blue-900 text-white text-center py-6 mt-12">
-    <p>© 2025 ESEN Life. All rights reserved.</p>
+    <p>© 2025 ESEN Events & Clubs. All rights reserved.</p>
   </footer>
+
+
+  <script src="js/script.js"></script>
+
 
 </body>
 </html>
