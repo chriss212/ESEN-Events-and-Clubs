@@ -1,84 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ESEN Events</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mouse+Memoirs&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mouse+Memoirs&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            montserrat: ['Montserrat', 'sans-serif']
+          animation: {
+            'float': 'float 3s ease-in-out infinite',
+            'pulse-slow': 'pulse 3s infinite',
+            'bounce-slow': 'bounce 2s infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
           }
         }
       }
-    };
+    }
   </script>
 </head>
-<body class="bg-gray-100 text-blue-900 font-montserrat">
+
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 text-blue-900 font-sans min-h-screen">
 
   <!-- Navbar -->
-<header class="bg-blue-900 text-white shadow">
-  <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
-    <h1 class="text-2xl font-bold">ESEN Events & Clubs</h1>
+  <header class="bg-blue-900 text-white shadow">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold">ESEN Events & Clubs</h1>
 
-    <!-- 🔽 Burger Button (mobile only) -->
-    <button id="menu-toggle" class="block md:hidden text-white focus:outline-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
+      <!-- 🔽 Burger Button (mobile only) -->
+      <button id="menu-toggle" class="block md:hidden text-white focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
 
 
-    <!-- 🔷 Nav Links -->
-    <nav id="menu" class="hidden md:flex space-x-4 text-sm md:text-base">
-      <a href="index.html" class="hover:text-yellow-400">Home</a>
-      <a href="events.html" class="hover:text-yellow-400">Events</a>
-      <a href="clubs.html" class="hover:text-yellow-400">Clubs</a>
-      <a href="join.html" class="hover:text-yellow-400">Join</a>
-    </nav>
-  </div>
+      <!-- 🔷 Nav Links -->
+      <nav id="menu" class="hidden md:flex space-x-4 text-sm md:text-base">
+        <a href="index.html" class="hover:text-yellow-400">Home</a>
+        <a href="events.html" class="hover:text-yellow-400">Events</a>
+        <a href="clubs.html" class="hover:text-yellow-400">Clubs</a>
+        <a href="join.html" class="hover:text-yellow-400">Join</a>
+      </nav>
+    </div>
 
-  <!-- 🔽 Mobile Menu (hidden by default) -->
-  <div id="mobile-menu" class="md:hidden hidden bg-blue-800 px-4 pb-4 space-y-2">
-    <a href="index.html" class="block hover:text-yellow-400">Home</a>
-    <a href="events.html" class="block hover:text-yellow-400">Events</a>
-    <a href="clubs.html" class="block hover:text-yellow-400">Clubs</a>
-    <a href="join.html" class="block hover:text-yellow-400">Join</a>
-  </div>
-</header>
+    <!-- 🔽 Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="md:hidden hidden bg-blue-800 px-4 pb-4 space-y-2">
+      <a href="index.html" class="block hover:text-yellow-400">Home</a>
+      <a href="events.html" class="block hover:text-yellow-400">Events</a>
+      <a href="clubs.html" class="block hover:text-yellow-400">Clubs</a>
+      <a href="join.html" class="block hover:text-yellow-400">Join</a>
+    </div>
+  </header>
 
-  <!-- Events List -->
-  <section class="max-w-6xl mx-auto py-12 px-4">
-    <h2 class="text-3xl font-bold text-center mb-8">Upcoming Events</h2>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-xl font-bold mb-2">Startup Bootcamp</h3>
-        <p class="text-sm text-gray-700 mb-2">Date: July 10, 2025</p>
-        <p class="mb-4">A full-day session to learn how to pitch and build your own startup idea.</p>
-        <a href="event-detail.html" class="text-yellow-400 hover:underline">More Info →</a>
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden py-16">
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
+    <div class="max-w-4xl mx-auto text-center px-4 relative">
+      <h2
+        class="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-900 to-purple-900 bg-clip-text text-transparent animate-float">
+        Upcoming Events
+      </h2>
+      <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+        Discover exciting opportunities to learn, network, and grow at ESEN
+      </p>
+      <div class="flex justify-center space-x-4">
+        <div class="w-16 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full animate-pulse-slow"></div>
+        <div class="w-16 h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-pulse-slow"></div>
+        <div class="w-16 h-1 bg-gradient-to-r from-green-400 to-blue-400 rounded-full animate-pulse-slow"></div>
       </div>
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-xl font-bold mb-2">Finance Week</h3>
-        <p class="text-sm text-gray-700 mb-2">Date: July 14-18, 2025</p>
-        <p class="mb-4">Workshops and panels with ESEN alumni working in international finance.</p>
-        <a href="event-detail.html" class="text-yellow-400 hover:underline">More Info →</a>
-      </div>
-      <!-- Add more cards as needed -->
     </div>
   </section>
 
-  <footer class="bg-blue-900 text-white text-center py-6">
-    <p>© 2025 ESEN Events & Clubs. All rights reserved.</p>
+  <!-- Featured Events -->
+  <section class="max-w-7xl mx-auto py-12 px-4">
+    <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
+
+      <!-- Girl Up Event -->
+      <div
+        class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-purple-500">
+        <div class="p-8">
+          <div class="flex items-center mb-4">
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white text-xl font-bold">
+              💜
+            </div>
+            <div class="ml-4">
+              <h3 class="text-xl font-bold text-gray-800">Girl Up ESEN</h3>
+              <p class="text-sm text-purple-600 font-medium">Special Talk</p>
+            </div>
+          </div>
+          <h4 class="text-lg font-semibold mb-3 text-gray-800">"Wake Up, Girl!" ✨</h4>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            A space to reflect on practices that society often normalizes, but shouldn't be normalized.
+          </p>
+          <div class="space-y-2 mb-6">
+            <div class="flex items-center text-sm text-gray-700">
+              <span class="w-4 h-4 bg-blue-100 rounded-full mr-2 flex items-center justify-center">🗓️</span>
+              <span class="font-medium">Date:</span> Tuesday, July 8th
+            </div>
+            <div class="flex items-center text-sm text-gray-700">
+              <span class="w-4 h-4 bg-blue-100 rounded-full mr-2 flex items-center justify-center">🕝</span>
+              <span class="font-medium">Time:</span> 2:40 PM - 4:30 PM
+            </div>
+            <div class="flex items-center text-sm text-gray-700">
+              <span class="w-4 h-4 bg-blue-100 rounded-full mr-2 flex items-center justify-center">📍</span>
+              <span class="font-medium">Location:</span> ESEN
+            </div>
+          </div>
+          <div class="flex space-x-2">
+            <a href="event-girlsup2.html"
+              class="flex-1 inline-flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full font-medium hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
+              More Info
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Game Day Event -->
+      <div
+        class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-pink-500">
+        <div class="p-8">
+          <div class="flex items-center mb-4">
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-500 rounded-full flex items-center justify-center text-white text-xl font-bold animate-bounce-slow">
+              🎲
+            </div>
+            <div class="ml-4">
+              <h3 class="text-xl font-bold text-gray-800">Girl Up ESEN</h3>
+              <p class="text-sm text-pink-600 font-medium">Game Day</p>
+            </div>
+          </div>
+          <h4 class="text-lg font-semibold mb-3 text-gray-800">Game Day Fun! 🎲💜</h4>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            An afternoon full of games, laughter, and lots of fun!
+          </p>
+          <div class="space-y-2 mb-6">
+            <div class="flex items-center text-sm text-gray-700">
+              <span class="w-4 h-4 bg-blue-100 rounded-full mr-2 flex items-center justify-center">🗓️</span>
+              <span class="font-medium">Date:</span> Friday, July 11th
+            </div>
+            <div class="flex items-center text-sm text-gray-700">
+              <span class="w-4 h-4 bg-blue-100 rounded-full mr-2 flex items-center justify-center">🕐</span>
+              <span class="font-medium">Time:</span> 12:30 PM - 4:00 PM
+            </div>
+            <div class="flex items-center text-sm text-gray-700">
+              <span class="w-4 h-4 bg-blue-100 rounded-full mr-2 flex items-center justify-center">📍</span>
+              <span class="font-medium">Location:</span> Lower SUM
+            </div>
+          </div>
+          <a href="event-girlsup.html"
+            class="inline-flex items-center justify-center w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-3 rounded-full font-medium hover:from-pink-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105">
+            More Info
+          </a>
+        </div>
+      </div>
+
+      <!-- Pizza Sale Event -->
+      <div
+        class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-orange-500">
+        <div class="p-8">
+          <div class="flex items-center mb-4">
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center text-white text-xl font-bold">
+              🍕
+            </div>
+            <div class="ml-4">
+              <h3 class="text-xl font-bold text-gray-800">Hope</h3>
+              <p class="text-sm text-orange-600 font-medium">Charity Sale</p>
+            </div>
+          </div>
+          <h4 class="text-lg font-semibold mb-3 text-gray-800">Pizza Sale for Hope Circus! 🍕</h4>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            Enjoy delicious pizzas while supporting the Hope Circus celebration this month.
+          </p>
+          <div class="space-y-2 mb-6">
+            <div class="flex items-center text-sm text-gray-700">
+              <span class="w-4 h-4 bg-blue-100 rounded-full mr-2 flex items-center justify-center">🗓️</span>
+              <span class="font-medium">Date:</span> Tuesday, July 15th
+            </div>
+            <div class="flex items-center text-sm text-gray-700">
+              <span class="w-4 h-4 bg-blue-100 rounded-full mr-2 flex items-center justify-center">🕐</span>
+              <span class="font-medium">Time:</span> 12:00 PM
+            </div>
+            <div class="flex items-center text-sm text-gray-700">
+              <span class="w-4 h-4 bg-blue-100 rounded-full mr-2 flex items-center justify-center">📍</span>
+              <span class="font-medium">Location:</span> Cafe ESEN
+            </div>
+          </div>
+          <a href="event-hope.html"
+            class="inline-flex items-center justify-center w-full bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-full font-medium hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105">
+            More Info
+          </a>
+        </div>
+      </div>
+
+      <!-- AIESEC Event -->
+      <div
+        class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-blue-500">
+        <div class="p-8">
+          <div class="flex items-center mb-4">
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-500 rounded-full flex items-center justify-center text-white text-xl font-bold">
+              ✈️
+            </div>
+            <div class="ml-4">
+              <h3 class="text-xl font-bold text-gray-800">AIESEC</h3>
+              <p class="text-sm text-blue-600 font-medium">International Internships</p>
+            </div>
+          </div>
+          <h4 class="text-lg font-semibold mb-3 text-gray-800">International Internships ✈️</h4>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            Do you love traveling? Want to work abroad? Explore international opportunities.
+          </p>
+          <div class="space-y-2 mb-6">
+            <div class="flex items-center text-sm text-gray-700">
+              <span class="w-4 h-4 bg-blue-100 rounded-full mr-2 flex items-center justify-center">🗓️</span>
+              <span class="font-medium">Date:</span> Tuesday, July 24th
+            </div>
+            <div class="flex items-center text-sm text-gray-700">
+              <span class="w-4 h-4 bg-blue-100 rounded-full mr-2 flex items-center justify-center">🕘</span>
+              <span class="font-medium">Time:</span> 10:00 AM - 2:00 PM
+            </div>
+            <div class="flex items-center text-sm text-gray-700">
+              <span class="w-4 h-4 bg-blue-100 rounded-full mr-2 flex items-center justify-center">📍</span>
+              <span class="font-medium">Location:</span> Front of auditorium
+            </div>
+          </div>
+          <a href="event-aiesec.html"
+            class="inline-flex items-center justify-center w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-3 rounded-full font-medium hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 transform hover:scale-105">
+            More Info
+          </a>
+        </div>
+      </div>
+
+      <!-- Startup Bootcamp -->
+      <div
+        class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-green-500">
+        <div class="p-8">
+          <div class="flex items-center mb-4">
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center text-white text-xl font-bold">
+              🚀
+            </div>
+            <div class="ml-4">
+              <h3 class="text-xl font-bold text-gray-800">Startup Bootcamp</h3>
+              <p class="text-sm text-green-600 font-medium">Entrepreneurship</p>
+            </div>
+          </div>
+          <h4 class="text-lg font-semibold mb-3 text-gray-800">Startup Bootcamp</h4>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            A full-day session to learn how to pitch and build your own startup idea.
+          </p>
+          <div class="space-y-2 mb-6">
+            <div class="flex items-center text-sm text-gray-700">
+              <span class="w-4 h-4 bg-blue-100 rounded-full mr-2 flex items-center justify-center">🗓️</span>
+              <span class="font-medium">Date:</span> July 30, 2025
+            </div>
+          </div>
+          <a href="event-detail.html"
+            class="inline-flex items-center justify-center w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 py-3 rounded-full font-medium hover:from-green-600 hover:to-emerald-600 transition-all duration-300 transform hover:scale-105">
+            More Info
+          </a>
+        </div>
+      </div>
+
+      <!-- Finance Week -->
+      <div
+        class="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-yellow-500">
+        <div class="p-8">
+          <div class="flex items-center mb-4">
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center text-white text-xl font-bold">
+              👨🏼‍💻
+            </div>
+            <div class="ml-4">
+              <h3 class="text-xl font-bold text-gray-800">Software Engineer Week</h3>
+              <p class="text-sm text-yellow-600 font-medium">Professional Development</p>
+            </div>
+          </div>
+          <h4 class="text-lg font-semibold mb-3 text-gray-800">Software Engineer Week</h4>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            Workshops and panels with ESEN alumni.
+          </p>
+          <div class="space-y-2 mb-6">
+            <div class="flex items-center text-sm text-gray-700">
+              <span class="w-4 h-4 bg-blue-100 rounded-full mr-2 flex items-center justify-center">🗓️</span>
+              <span class="font-medium">Date:</span> August 12–16, 2025
+            </div>
+          </div>
+          <a href="event-detail2.html"
+            class="inline-flex items-center justify-center w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-6 py-3 rounded-full font-medium hover:from-yellow-600 hover:to-orange-600 transition-all duration-300 transform hover:scale-105">
+            More Info
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="bg-gradient-to-r from-blue-900 to-purple-900 py-16 mt-16">
+    <div class="max-w-4xl mx-auto text-center px-4">
+      <h3 class="text-3xl font-bold text-white mb-4">Don't Miss Out!</h3>
+      <p class="text-xl text-blue-100 mb-8">
+        Join our vibrant community and be part of amazing experiences at ESEN
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="join.html"
+          class="bg-gradient-to-r from-yellow-400 to-orange-400 text-blue-900 px-8 py-4 rounded-full font-bold text-lg hover:from-yellow-300 hover:to-orange-300 transition-all duration-300 transform hover:scale-105">
+          Join a Club
+        </a>
+        <a href="clubs.html"
+          class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-blue-900 transition-all duration-300 transform hover:scale-105">
+          View All Clubs
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gradient-to-r from-slate-900 to-blue-900 text-white text-center py-8">
+    <div class="max-w-4xl mx-auto px-4">
+      <p class="text-lg">© 2025 ESEN Events & Clubs. All rights reserved.</p>
+      <p class="text-blue-300 mt-2">Building connections, creating memories, shaping futures.</p>
+    </div>
   </footer>
 
   <script src="js/script.js"></script>
 
 
 </body>
+
 </html>
