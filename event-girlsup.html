@@ -33,36 +33,59 @@
 <body class="bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-100 text-indigo-900 font-sans min-h-screen">
 
     <!-- Navbar -->
-    <header class="bg-blue-900 text-white shadow">
-        <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
-            <h1 class="text-2xl font-bold">ESEN Events & Clubs</h1>
-
-            <!-- 🔽 Burger Button (mobile only) -->
-            <button id="menu-toggle" class="block md:hidden text-white focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
-
-
-            <!-- 🔷 Nav Links -->
-            <nav id="menu" class="hidden md:flex space-x-4 text-sm md:text-base">
-                <a href="index.html" class="hover:text-yellow-400">Home</a>
-                <a href="events.html" class="hover:text-yellow-400">Events</a>
-                <a href="clubs.html" class="hover:text-yellow-400">Clubs</a>
-                <a href="join.html" class="hover:text-yellow-400">Join</a>
-            </nav>
+  <header class="sticky top-0 z-50 bg-white/90 glass-effect shadow-lg border-b border-white/20">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex justify-between items-center px-4 lg:px-6 py-4">
+        <!-- Logo Section -->
+        <div class="flex items-center space-x-3">
+          <div
+            class="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+            <img src="./assets/logo.jpg" alt="Logo" />
+          </div>
+          <div>
+            <h1
+              class="text-xl lg:text-2xl font-bold bg-gradient-to-r from-blue-900 to-purple-900 bg-clip-text text-transparent">
+              ESEN Events & Clubs
+            </h1>
+            <p class="text-xs text-gray-500 hidden lg:block">Connect • Engage • Grow</p>
+          </div>
         </div>
 
-        <!-- 🔽 Mobile Menu (hidden by default) -->
-        <div id="mobile-menu" class="md:hidden hidden bg-blue-800 px-4 pb-4 space-y-2">
-            <a href="index.html" class="block hover:text-yellow-400">Home</a>
-            <a href="events.html" class="block hover:text-yellow-400">Events</a>
-            <a href="clubs.html" class="block hover:text-yellow-400">Clubs</a>
-            <a href="join.html" class="block hover:text-yellow-400">Join</a>
+        <!-- Mobile Menu Button -->
+        <button id="menu-toggle"
+          class="lg:hidden p-2 rounded-xl bg-blue-50 hover:bg-blue-100 transition-colors duration-200">
+          <svg class="w-6 h-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center space-x-1">
+          <a href="index.html"
+            class="px-4 py-2 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-gray-100 hover:text-blue-900">Home</a>
+          <a href="events.html"
+            class="px-4 py-2 text-blue-900 bg-blue-50 rounded-lg font-medium transition-all duration-200 hover:bg-blue-100">Events</a>
+          <a href="clubs.html"
+            class="px-4 py-2 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-gray-100 hover:text-blue-900">Clubs</a>
+          <a href="join.html"
+            class="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium transition-all duration-200 hover:from-blue-700 hover:to-purple-700 transform hover:scale-105">Join
+            Us</a>
+        </nav>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="lg:hidden hidden border-t border-gray-200 bg-white/95">
+        <div class="px-4 py-4 space-y-2">
+          <a href="index.html" class="block px-4 py-3 text-gray-700 rounded-lg font-medium hover:bg-gray-50">Home</a>
+          <a href="#" class="block px-4 py-3 text-blue-900 bg-blue-50 rounded-lg font-medium">Events</a>
+          <a href="clubs.html" class="block px-4 py-3 text-gray-700 rounded-lg font-medium hover:bg-gray-50">Clubs</a>
+          <a href="join.html"
+            class="block px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium text-center">Join
+            Us</a>
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
 
     <!-- GirlUp Game Day Banner -->
     <section class="relative bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-500 py-20">
@@ -135,12 +158,83 @@
         </div>
     </section>
 
-    <footer class="bg-gradient-to-r from-slate-900 to-blue-900 text-white text-center py-8 mt-16">
-        <div class="max-w-4xl mx-auto px-4">
-            <p class="text-lg">© 2025 ESEN Events & Clubs. All rights reserved.</p>
-            <p class="text-blue-300 mt-2">Building connections, creating memories, shaping futures.</p>
+  <footer class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 lg:px-6 py-12">
+      <div class="grid md:grid-cols-4 gap-8">
+
+        <!-- Brand Section -->
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-3 mb-6">
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+              <span class="text-white font-bold text-xl">E</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">ESEN Events & Clubs</h3>
+              <p class="text-gray-400 text-sm">Connect • Engage • Grow</p>
+            </div>
+          </div>
+          <p class="text-gray-300 mb-6 leading-relaxed max-w-md">
+            Building the future through student connections, meaningful events, and vibrant communities at ESEN.
+          </p>
+          <div class="flex space-x-4">
+            <div
+              class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
+              <span class="text-sm">📧</span>
+            </div>
+            <div
+              class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
+              <span class="text-sm">📱</span>
+            </div>
+            <div
+              class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
+              <span class="text-sm">🌐</span>
+            </div>
+          </div>
         </div>
-    </footer>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="events.html" class="text-gray-300 hover:text-white transition-colors">Events</a></li>
+            <li><a href="clubs.html" class="text-gray-300 hover:text-white transition-colors">Clubs</a></li>
+            <li><a href="join.html" class="text-gray-300 hover:text-white transition-colors">Join Us</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Get in Touch</h4>
+          <div class="space-y-3 text-gray-300">
+            <div class="flex items-center">
+              <span class="w-5 h-5 mr-3">📍</span>
+              <span class="text-sm">ESEN Campus, Santa Tecla</span>
+            </div>
+            <div class="flex items-center">
+              <span class="w-5 h-5 mr-3">📧</span>
+              <span class="text-sm">events@esen.edu.sv</span>
+            </div>
+            <div class="flex items-center">
+              <span class="w-5 h-5 mr-3">📞</span>
+              <span class="text-sm">+503 2278-1011</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm">
+          © 2025 ESEN Events & Clubs. All rights reserved.
+        </p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
       <script src="js/script.js"></script>
 
