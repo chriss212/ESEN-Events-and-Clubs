@@ -1,63 +1,901 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ESEN Clubs</title>
+  <title>ESEN Clubs - Join Our Community</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mouse+Memoirs&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            montserrat: ['Montserrat', 'sans-serif']
+            'inter': ['Inter', 'sans-serif'],
+            'poppins': ['Poppins', 'sans-serif']
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.8s ease-out',
+            'slide-up': 'slideUp 0.6s ease-out',
+            'float': 'float 6s ease-in-out infinite',
+            'bounce-gentle': 'bounceGentle 2s ease-in-out infinite',
+            'shimmer': 'shimmer 2s linear infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(50px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            bounceGentle: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' }
+            },
+            shimmer: {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(100%)' }
+            }
+          },
+          backgroundImage: {
+            'mesh-gradient': 'radial-gradient(at 40% 20%, hsla(233,74%, 85%, 1) 0px, transparent 50%), radial-gradient(at 80% 0%, hsla(245,67%, 88%, 1) 0px, transparent 50%), radial-gradient(at 0% 50%, hsla(339,49%, 85%, 1) 0px, transparent 50%)'
           }
         }
       }
     };
   </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
 
+    .glass-effect {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .shimmer-effect {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shimmer-effect::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: shimmer 2s infinite;
+    }
+
+    .club-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .club-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+  </style>
 </head>
-<body class="bg-gray-100 text-blue-900 font-montserrat">
 
-  <!-- Navbar -->
-  <header class="bg-blue-900 text-white shadow">
-    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
-      <h1 class="text-2xl font-bold">ESEN Events & Clubs</h1>
-      <nav class="space-x-4">
-        <a href="index.html" class="hover:text-yellow-400">Home</a>
-        <a href="events.html" class="hover:text-yellow-400">Events</a>
-        <a href="clubs.html" class="hover:text-yellow-400">Clubs</a>
-        <a href="join.html" class="hover:text-yellow-400">Join Us</a>
-      </nav>
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 text-gray-800 font-inter antialiased">
+
+  <!-- Enhanced Navbar -->
+  <header class="sticky top-0 z-50 bg-white/90 glass-effect shadow-lg border-b border-white/20">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex justify-between items-center px-4 lg:px-6 py-4">
+        <!-- Logo Section -->
+        <div class="flex items-center space-x-3">
+          <div
+            class="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+            <img src="./assets/logo.jpg" alt="Logo" />
+          </div>
+          <div>
+            <h1
+              class="text-xl lg:text-2xl font-bold bg-gradient-to-r from-blue-900 to-purple-900 bg-clip-text text-transparent">
+              ESEN Events & Clubs
+            </h1>
+            <p class="text-xs text-gray-500 hidden lg:block">Connect • Engage • Grow</p>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-toggle"
+          class="lg:hidden p-2 rounded-xl bg-blue-50 hover:bg-blue-100 transition-colors duration-200">
+          <svg class="w-6 h-6 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center space-x-1">
+          <a href="index.html"
+            class="px-4 py-2 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-gray-100 hover:text-blue-900">Home</a>
+          <a href="events.html"
+            class="px-4 py-2 text-gray-700 rounded-lg font-medium transition-all duration-200 hover:bg-gray-100 hover:text-blue-900">Events</a>
+          <a href="#"
+            class="px-4 py-2 text-blue-900 bg-blue-50 rounded-lg font-medium transition-all duration-200 hover:bg-blue-100">Clubs</a>
+          <a href="join.html"
+            class="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium transition-all duration-200 hover:from-blue-700 hover:to-purple-700 transform hover:scale-105">Join
+            Us</a>
+        </nav>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="lg:hidden hidden border-t border-gray-200 bg-white/95">
+        <div class="px-4 py-4 space-y-2">
+          <a href="index.html" class="block px-4 py-3 text-gray-700 rounded-lg font-medium hover:bg-gray-50">Home</a>
+          <a href="events.html" class="block px-4 py-3 text-gray-700 rounded-lg font-medium hover:bg-gray-50">Events</a>
+          <a href="#" class="block px-4 py-3 text-blue-900 bg-blue-50 rounded-lg font-medium">Clubs</a>
+          <a href="join.html"
+            class="block px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium text-center">Join
+            Us</a>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- Club List -->
-  <section class="max-w-6xl mx-auto py-12 px-4">
-    <h2 class="text-3xl font-bold text-center mb-8">Our Clubs</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-xl font-bold mb-2">Debate Club</h3>
-        <p>Sharpen your argument skills, attend competitions and improve public speaking.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-xl font-bold mb-2">Tech & Coding Club</h3>
-        <p>Learn to code, build projects and prepare for hackathons with other students.</p>
-      </div>
-      <div class="bg-white p-6 rounded-lg shadow">
-        <h3 class="text-xl font-bold mb-2">Music Club</h3>
-        <p>Whether you sing or play an instrument, this is your stage. Join weekly jams!</p>
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-mesh-gradient py-16 lg:py-24">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5"></div>
+
+    <!-- Decorative Elements -->
+    <div
+      class="absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full opacity-20 animate-float">
+    </div>
+    <div
+      class="absolute bottom-20 right-10 w-32 h-32 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full opacity-15 animate-bounce-gentle">
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 lg:px-6">
+      <div class="text-center animate-fade-in">
+        <div
+          class="inline-flex items-center px-4 py-2 bg-white/60 glass-effect rounded-full mb-6 border border-white/30">
+          <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+          <span class="text-sm font-medium text-gray-700">7+ Active Clubs • Join the Community</span>
+        </div>
+
+        <h1 class="text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
+          <span class="bg-gradient-to-r from-blue-900 via-purple-900 to-blue-900 bg-clip-text text-transparent">
+            Our Clubs
+          </span>
+        </h1>
+
+        <p class="text-xl lg:text-2xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto">
+          Discover communities that match your passions and interests.
+          <span class="font-semibold text-blue-900">Find your tribe at ESEN.</span>
+        </p>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-3 gap-6 max-w-2xl mx-auto">
+          <div class="text-center">
+            <div class="text-3xl lg:text-4xl font-bold text-blue-900 mb-1">15+</div>
+            <div class="text-sm text-gray-600">Active Clubs</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl lg:text-4xl font-bold text-purple-900 mb-1">500+</div>
+            <div class="text-sm text-gray-600">Members</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl lg:text-4xl font-bold text-orange-600 mb-1">100%</div>
+            <div class="text-sm text-gray-600">Free to Join</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer class="bg-blue-900 text-white text-center py-6">
-    <p>© 2025 ESEN Events & Clubs. All rights reserved.</p>
+  <!-- Filter Section -->
+  <section class="py-8 bg-white/50 glass-effect">
+    <div class="max-w-7xl mx-auto px-4 lg:px-6">
+      <div class="flex flex-col lg:flex-row gap-4 items-center justify-between">
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap gap-2 lg:gap-3">
+          <button
+            class="filter-btn active px-4 py-2 rounded-full text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition-all duration-200"
+            data-filter="all">
+            All Clubs
+          </button>
+          <button
+            class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-200"
+            data-filter="social">
+            Social Impact
+          </button>
+          <button
+            class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-200"
+            data-filter="entrepreneurship">
+            Entrepreneurship
+          </button>
+          <button
+            class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-200"
+            data-filter="tech">
+            Technology
+          </button>
+          <button
+            class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-200"
+            data-filter="arts">
+            Arts & Culture
+          </button>
+        </div>
+
+        <!-- Results counter -->
+        <div class="text-sm text-gray-600">
+          <span id="results-count">9</span> clubs found
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="py-16 lg:py-24 bg-white">
+    <section class="max-w-7xl mx-auto px-4 lg:px-6">
+
+      <!-- Clubs Grid -->
+      <div id="clubs-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Rotaract -->
+        <div
+          class="club-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-300"
+          data-category="social">
+          <div class="relative">
+            <div
+              class="h-48 bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-black/10"></div>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="px-3 py-1 bg-white/90 glass-effect rounded-full text-xs font-medium text-pink-900">Social impact</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-gray-900 group-hover:text-pink-600 transition-colors">Rotaract</h3>
+                <div class="flex items-center text-sm text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 919.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  25+ members
+                </div>
+              </div>
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                We are young people committed to making a positive impact in the community through leadership, social
+                projects, and professional development.
+              </p>
+              <div class="flex items-center justify-between">
+                <a href="join.html"
+                  class="inline-flex items-center text-pink-600 hover:text-pink-700 font-medium group">
+                  Join Club
+                  <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+                <div class="flex items-center space-x-2">
+                  <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span class="text-xs text-gray-500">Active</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ESEN Music -->
+        <div
+          class="club-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-300"
+          data-category="arts">
+          <div class="relative">
+            <div
+              class="h-48 bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-black/10"></div>
+
+              <div class="absolute top-4 right-4">
+                <span class="px-3 py-1 bg-white/90 glass-effect rounded-full text-xs font-medium text-purple-900">Arts &
+                  Culture</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition-colors">ESEN Music
+                </h3>
+                <div class="flex items-center text-sm text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 515.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 919.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  30+ members
+                </div>
+              </div>
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                Our purpose is to develop the musical art of students with artistic vocation, supporting events
+                organized by different associations and also performing outside the school.
+              </p>
+              <div class="flex items-center justify-between">
+                <a href="join.html"
+                  class="inline-flex items-center text-purple-600 hover:text-purple-700 font-medium group">
+                  Join Club
+                  <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+                <div class="flex items-center space-x-2">
+                  <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span class="text-xs text-gray-500">Active</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Girl Up -->
+        <div
+          class="club-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-300"
+          data-category="social">
+          <div class="relative">
+            <div
+              class="h-48 bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-black/10"></div>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="px-3 py-1 bg-white/90 glass-effect rounded-full text-xs font-medium text-emerald-900">Social impact</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors">Girl Up</h3>
+                <div class="flex items-center text-sm text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 515.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 919.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  20+ members
+                </div>
+              </div>
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                A global development movement led by young people who take action to defend and achieve gender equity.
+              </p>
+              <div class="flex items-center justify-between">
+                <a href="join.html"
+                  class="inline-flex items-center text-emerald-600 hover:text-emerald-700 font-medium group">
+                  Join Club
+                  <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+                <div class="flex items-center space-x-2">
+                  <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span class="text-xs text-gray-500">Active</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SAE -->
+        <div
+          class="club-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-300"
+          data-category="entrepreneurship">
+          <div class="relative">
+            <div
+              class="h-48 bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-black/10"></div>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="px-3 py-1 bg-white/90 glass-effect rounded-full text-xs font-medium text-orange-900">Entrepreneurship</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-gray-900 group-hover:text-orange-600 transition-colors">Student Entrepreneurship Society</h3>
+                <div class="flex items-center text-sm text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 515.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 919.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  40+ members
+                </div>
+              </div>
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                A society of entrepreneurial students from ESEN dedicated to promoting, developing and supporting any
+                entrepreneurial activity.
+              </p>
+              <div class="flex items-center justify-between">
+                <a href="join.html"
+                  class="inline-flex items-center text-orange-600 hover:text-orange-700 font-medium group">
+                  Join Club
+                  <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+                <div class="flex items-center space-x-2">
+                  <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span class="text-xs text-gray-500">Active</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Techo -->
+        <div
+          class="club-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-300"
+          data-category="social">
+          <div class="relative">
+            <div
+              class="h-48 bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-black/10"></div>
+              <div class="absolute top-4 right-4">
+                <span class="px-3 py-1 bg-white/90 glass-effect rounded-full text-xs font-medium text-blue-900">Social
+                  Impact</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">TECHO</h3>
+                <div class="flex items-center text-sm text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 515.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 919.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  50+ members
+                </div>
+              </div>
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                An organization present in Latin America and the Caribbean that seeks to overcome poverty in precarious
+                settlements through joint action of residents and young volunteers.
+              </p>
+              <div class="flex items-center justify-between">
+                <a href="join.html"
+                  class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium group">
+                  Join Club
+                  <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+                <div class="flex items-center space-x-2">
+                  <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span class="text-xs text-gray-500">Active</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EduTech -->
+        <div
+          class="club-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-300"
+          data-category="tech">
+          <div class="relative">
+            <div
+              class="h-48 bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-black/10"></div>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="px-3 py-1 bg-white/90 glass-effect rounded-full text-xs font-medium text-green-900">Technology</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-gray-900 group-hover:text-green-600 transition-colors">EduTech</h3>
+                <div class="flex items-center text-sm text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 515.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 919.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  35+ members
+                </div>
+              </div>
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                Our goal is to reduce the gap in access to technological tools and train students in robotics and
+                technology to replicate it in schools in Santa Tecla.
+              </p>
+              <div class="flex items-center justify-between">
+                <a href="join.html"
+                  class="inline-flex items-center text-green-600 hover:text-green-700 font-medium group">
+                  Join Club
+                  <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+                <div class="flex items-center space-x-2">
+                  <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span class="text-xs text-gray-500">Active</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ProBecas -->
+        <div
+          class="club-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-300"
+          data-category="support">
+          <div class="relative">
+            <div
+              class="h-48 bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-black/10"></div>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="px-3 py-1 bg-white/90 glass-effect rounded-full text-xs font-medium text-yellow-900">Student
+                  Support</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-gray-900 group-hover:text-yellow-600 transition-colors">ProBecas</h3>
+                <div class="flex items-center text-sm text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 515.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 919.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  15+ members
+                </div>
+              </div>
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                Created with the aim of organizing various fundraising activities that cover food, transportation and
+                accommodation costs, according to the needs of each student.
+              </p>
+              <div class="flex items-center justify-between">
+                <a href="join.html"
+                  class="inline-flex items-center text-yellow-600 hover:text-yellow-700 font-medium group">
+                  Join Club
+                  <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+                <div class="flex items-center space-x-2">
+                  <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span class="text-xs text-gray-500">Active</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hope -->
+        <div
+          class="club-card bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden group hover:shadow-xl transition-all duration-300"
+          data-category="social">
+          <div class="relative">
+            <div
+              class="h-48 bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-black/10"></div>
+              <div class="absolute top-4 right-4">
+                <span class="px-3 py-1 bg-white/90 glass-effect rounded-full text-xs font-medium text-violet-900">Health
+                  & Wellness</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-gray-900 group-hover:text-violet-600 transition-colors">HOPE</h3>
+                <div class="flex items-center text-sm text-gray-500">
+                  <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 515.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 919.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  18+ members
+                </div>
+              </div>
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                An organization of young university students committed to the fight against childhood cancer in El
+                Salvador.
+              </p>
+              <div class="flex items-center justify-between">
+                <a href="join.html"
+                  class="inline-flex items-center text-violet-600 hover:text-violet-700 font-medium group">
+                  Join Club
+                  <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+                <div class="flex items-center space-x-2">
+                  <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                  <span class="text-xs text-gray-500">Active</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- No Results Message -->
+      <div id="no-results" class="hidden text-center py-16">
+        <div class="max-w-md mx-auto">
+          <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-12 h-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">No clubs found</h3>
+          <p class="text-gray-600 mb-6">Try selecting a different category</p>
+          <button onclick="resetFilters()"
+            class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+            Show All Clubs
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Call to Action Section -->
+  <section class="py-16 lg:py-24 bg-gradient-to-r from-blue-900 via-purple-900 to-blue-900 relative overflow-hidden">
+    <div class="absolute inset-0 bg-black/20"></div>
+    <div class="absolute top-0 left-0 w-full h-full">
+      <div
+        class="absolute top-20 left-20 w-40 h-40 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-full animate-float">
+      </div>
+      <div
+        class="absolute bottom-20 right-20 w-60 h-60 bg-gradient-to-br from-purple-400/20 to-pink-500/20 rounded-full animate-bounce-gentle">
+      </div>
+    </div>
+
+    <div class="relative max-w-4xl mx-auto px-4 lg:px-6 text-center">
+      <div class="animate-fade-in">
+        <h2 class="text-3xl lg:text-5xl font-bold text-white mb-6">
+          Ready to Get Involved?
+        </h2>
+        <p class="text-xl text-blue-100 mb-12 max-w-2xl mx-auto leading-relaxed">
+          Join a community that matches your interests and make lasting connections while making a difference.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+          <a href="join.html"
+            class="group px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 rounded-2xl font-bold text-lg transition-all duration-300 hover:from-yellow-300 hover:to-orange-400 transform hover:scale-105 hover:shadow-2xl shimmer-effect">
+            <span class="flex items-center">
+              Join a Club Today
+              <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+          </a>
+
+          <a href="events.html"
+            class="px-8 py-4 bg-white/10 glass-effect text-white rounded-2xl font-bold text-lg border border-white/30 transition-all duration-300 hover:bg-white/20 transform hover:scale-105">
+            View Events
+          </a>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-white/20">
+          <div class="text-center">
+            <div class="text-2xl lg:text-3xl font-bold text-white mb-1">15+</div>
+            <div class="text-sm text-blue-200">Active Clubs</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl lg:text-3xl font-bold text-white mb-1">500+</div>
+            <div class="text-sm text-blue-200">Members</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl lg:text-3xl font-bold text-white mb-1">50+</div>
+            <div class="text-sm text-blue-200">Events/Year</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl lg:text-3xl font-bold text-white mb-1">100%</div>
+            <div class="text-sm text-blue-200">Free to Join</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enhanced Footer -->
+  <footer class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 lg:px-6 py-12">
+      <div class="grid md:grid-cols-4 gap-8">
+
+        <!-- Brand Section -->
+        <div class="md:col-span-2">
+          <div class="flex items-center space-x-3 mb-6">
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+              <span class="text-white font-bold text-xl">E</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">ESEN Events & Clubs</h3>
+              <p class="text-gray-400 text-sm">Connect • Engage • Grow</p>
+            </div>
+          </div>
+          <p class="text-gray-300 mb-6 leading-relaxed max-w-md">
+            Building the future through student connections, meaningful events, and vibrant communities at ESEN.
+          </p>
+          <div class="flex space-x-4">
+            <div
+              class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
+              <span class="text-sm">📧</span>
+            </div>
+            <div
+              class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
+              <span class="text-sm">📱</span>
+            </div>
+            <div
+              class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
+              <span class="text-sm">🌐</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+            <li><a href="events.html" class="text-gray-300 hover:text-white transition-colors">Events</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Clubs</a></li>
+            <li><a href="join.html" class="text-gray-300 hover:text-white transition-colors">Join Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Get in Touch</h4>
+          <div class="space-y-3 text-gray-300">
+            <div class="flex items-center">
+              <span class="w-5 h-5 mr-3">📍</span>
+              <span class="text-sm">ESEN Campus, Santa Tecla</span>
+            </div>
+            <div class="flex items-center">
+              <span class="w-5 h-5 mr-3">📧</span>
+              <span class="text-sm">clubs@esen.edu.sv</span>
+            </div>
+            <div class="flex items-center">
+              <span class="w-5 h-5 mr-3">📞</span>
+              <span class="text-sm">+503 2234-9292</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm">
+          © 2025 ESEN Events & Clubs. All rights reserved.
+        </p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
   </footer>
 
+  <!-- Enhanced JavaScript -->
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+
+        // Animate the hamburger icon
+        const svg = menuToggle.querySelector('svg');
+        if (mobileMenu.classList.contains('hidden')) {
+          svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+        } else {
+          svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
+        }
+      });
+    }
+
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const clubCards = document.querySelectorAll('.club-card');
+    const noResults = document.getElementById('no-results');
+    const resultsCount = document.getElementById('results-count');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Update active filter button
+        filterButtons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
+        filterButtons.forEach(btn => btn.classList.add('bg-gray-100', 'text-gray-700'));
+
+        button.classList.remove('bg-gray-100', 'text-gray-700');
+        button.classList.add('active', 'bg-blue-600', 'text-white');
+
+        const filter = button.getAttribute('data-filter');
+        filterClubs(filter);
+      });
+    });
+
+    function filterClubs(filter) {
+      let visibleCount = 0;
+
+      clubCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+
+        if (filter === 'all' || category === filter) {
+          card.style.display = 'block';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Update results count
+      resultsCount.textContent = visibleCount;
+
+      // Show/hide no results message
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }
+
+    // Reset filters function
+    function resetFilters() {
+      filterButtons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'text-white'));
+      filterButtons.forEach(btn => btn.classList.add('bg-gray-100', 'text-gray-700'));
+
+      filterButtons[0].classList.remove('bg-gray-100', 'text-gray-700');
+      filterButtons[0].classList.add('active', 'bg-blue-600', 'text-white');
+
+      filterClubs('all');
+    }
+
+    // Add scroll-based animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements with animation classes
+    document.querySelectorAll('.animate-fade-in, .animate-slide-up').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      observer.observe(el);
+    });
+
+    // Add loading animation
+    window.addEventListener('load', () => {
+      document.body.style.opacity = '1';
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+
 </body>
-</html>
